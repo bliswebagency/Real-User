@@ -46,6 +46,22 @@ class Realuser {
 		$this->EE =& get_instance();
 	}
 	
+	public function check(){
+	
+		$o = "false";
+		
+		$username = $this->EE->TMPL->fetch_param('username');
+		
+		$query = "SELECT username FROM exp_members WHERE username = \"".$username."\" LIMIT 0,1";
+		$results = $this->EE->db->query($query);				
+		$source_val = $results->row('username');
+		
+		if ($source_val != NULL) $o = "true";
+		
+		return $o;
+	
+	}
+	
 	// ----------------------------------------------------------------
 	
 	/**
