@@ -52,6 +52,8 @@ class Realuser {
 		
 		$username = $this->EE->TMPL->fetch_param('username');
 		
+		if (isset($_REQUEST['ru_username'])) $username = $_REQUEST['ru_username'];
+		
 		$query = "SELECT username FROM exp_members WHERE username = \"".$username."\" LIMIT 0,1";
 		$results = $this->EE->db->query($query);				
 		$source_val = $results->row('username');
